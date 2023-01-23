@@ -1,0 +1,36 @@
+.posts, .profile{
+    width: 100%;
+    margin-top: 30px;
+}
+.post{
+    border: 2px solid black;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+.post-header{
+    display: flex;
+    align-items: center;
+}
+.post-header .user-name{
+    font-size: 1.2rem;
+}
+.profile {
+    border: 2px solid black;
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile-header .user-icon {
+    border-radius: 50%;
+    border: 3px solid white;
+    height: 150px;
+    width: 150px;
+}
+.profile .btn-link{
+    margin-top: 50px;
+}
+.profile .name{
+    font-size: 2rem;
+    font-weight: 500;
+}
