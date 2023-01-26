@@ -1,0 +1,8 @@
+.task{
+  display: flex;
+  align-items: center;
+}
+.task.done .task-description{
+  color: gray;
+  text-decoration: line-through;
+}
