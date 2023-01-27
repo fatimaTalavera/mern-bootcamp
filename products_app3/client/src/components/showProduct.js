@@ -1,6 +1,7 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import { useState, useEffect } from 'react'
+import { useParams, Link, useNavigate } from 'react-router-dom'
+import DeleteBtn from './deleteBtn'
 
 const ShowProduct = (props) => {
     const [product, setProduct] = useState({})
@@ -15,12 +16,6 @@ const ShowProduct = (props) => {
             .catch(error => console.log(error))
     }, [])
 
-    function deleteHandler () {
-        axios.delete(`http://localhost:8000/api/products/delete/${id}`)
-            .then(res => redirect())
-            .catch(err => console.log(err))
-    }
-
     return (
         <div className='container text-center'>
             <h1 className='mt-5 mb-3'>{product.title}</h1>
@@ -29,7 +24,7 @@ const ShowProduct = (props) => {
 
             <div className='mt-3'>
                 <Link to={`/products/edit/${id}`} className='mx-1 btn btn-success'>Edit</Link>
-                <button className='mx-1 btn btn-danger' onClick={deleteHandler}>Delete</button>
+                <DeleteBtn id={id} redirectFn={redirect}/>
             </div>
         </div>
     )
