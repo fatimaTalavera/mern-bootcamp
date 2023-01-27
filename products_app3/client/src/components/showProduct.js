@@ -8,12 +8,12 @@ const ShowProduct = (props) => {
     const {id} = useParams()
 
     const navigate = useNavigate()
-    const redirect = event => navigate('/')
+    const redirect = route => navigate(route || '/')
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/products/${id}`)
             .then(res => setProduct(res.data.product))
-            .catch(error => console.log(error))
+            .catch(error => redirect('/404'))
     }, [])
 
     return (

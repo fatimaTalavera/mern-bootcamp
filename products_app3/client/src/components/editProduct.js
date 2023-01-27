@@ -8,23 +8,29 @@ const EditProduct = (props) => {
     const [product, setProduct] = useState({})
     
     const navigate = useNavigate()
-    const redirect = event => navigate('/')
+    const redirect = route => navigate(route || '/')
 
 
     useEffect(() => {
         axios.get(`http://localhost:8000/api/products/${id}`)
             .then(res => setProduct(res.data.product))
-            .catch(error => console.log(error))
+            .catch(error => redirect('/404'))
     }, [])
     
-    const saveData = (data) => {
+    const saveData = (data, dispatch) => {
         console.log('Saving...', data)
         axios.put(`http://localhost:8000/api/products/update/${id}`, data)
             .then(resp => {
                 alert('Product was updated successfully.')
                 redirect()
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                error = error.response.data.errors
+                Object.keys(error).map(key => dispatch(
+                    {type: key, payload: {value: error[key].value, error: error[key].message}
+                }))
+            })
     }
  
     return (

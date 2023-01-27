@@ -60,24 +60,24 @@ const Form = (props) => {
 
     function onSubmit(e) {
         e.preventDefault()
-        handleSubmit(serializeState(state))
+        handleSubmit(serializeState(state), dispatch)
     }
  
     return (
         <form onSubmit={onSubmit}>
             <div className="input-group mb-3">
                 <span className="input-group-text">Title</span>
-                <input type="text" className="form-control" placeholder="Title" name="title" onChange={ onChange } value={state.title?.value}/>
+                <input type="text" className="form-control" placeholder="Title" name="title" onChange={ onChange } value={state.title?.value || ''}/>
                 { state.title?.error !== null && <div className="col-12 text-danger"> {state.title?.error} </div>}
             </div>
             <div className="input-group mb-3">
                 <span className="input-group-text">Price</span>
-                <input type="number" className="form-control" placeholder="Price" name="price" onChange={ onChange } value={state.price?.value}/>
+                <input type="number" className="form-control" placeholder="Price" name="price" onChange={ onChange } value={state.price?.value || ''}/>
                 { state.price?.error !== null && <div className="col-12 text-danger"> {state.price?.error} </div>}
             </div>
             <div className="input-group mb-3">
                 <span className="input-group-text">Description</span>
-                <input type="text" className="form-control" placeholder="Description" name="description" onChange={ onChange } value={state.description?.value}/>
+                <input type="text" className="form-control" placeholder="Description" name="description" onChange={ onChange } value={state.description?.value || ''}/>
                 { state.description?.error !== null && <div className="col-12 text-danger"> {state.description?.error} </div>}
             </div>
             <button type='submit' className='btn btn-success mt-3'>{buttonTitle}</button>

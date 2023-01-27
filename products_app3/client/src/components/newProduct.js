@@ -7,14 +7,20 @@ const NewProduct = (props) => {
     const navigate = useNavigate()
     const redirect = event => navigate(0)
 
-    const saveData = (data) => {
+    const saveData = (data, dispatch) => {
         console.log('Saving...', data)
         axios.post('http://localhost:8000/api/products/new', data)
             .then(resp => {
                 alert('Product was created successfully.')
                 redirect()
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                console.log(error)
+                error = error.response.data.errors
+                Object.keys(error).map(key => dispatch(
+                    {type: key, payload: {value: error[key].value, error: error[key].message}
+                }))
+            })
     }
  
     return (
