@@ -12,14 +12,14 @@ const EditProduct = (props) => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/products/${id}`)
+        axios.get(`http://localhost:8000/api/products/${id}`, {withCredentials:true})
             .then(res => setProduct(res.data.product))
             .catch(error => redirect('/404'))
     }, [])
     
     const saveData = (data, dispatch) => {
         console.log('Saving...', data)
-        axios.put(`http://localhost:8000/api/products/update/${id}`, data)
+        axios.put(`http://localhost:8000/api/products/update/${id}`, data, {withCredentials:true})
             .then(resp => {
                 alert('Product was updated successfully.')
                 redirect()

@@ -11,7 +11,7 @@ const ListProducts = (props) => {
     const redirect = event => navigate(0)
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/products')
+        axios.get('http://localhost:8000/api/products', {withCredentials:true})
             .then(res => setProducts(res.data.products))
             .catch(error => console.log(error))
     }, [])

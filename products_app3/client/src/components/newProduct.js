@@ -9,7 +9,7 @@ const NewProduct = (props) => {
 
     const saveData = (data, dispatch) => {
         console.log('Saving...', data)
-        axios.post('http://localhost:8000/api/products/new', data)
+        axios.post('http://localhost:8000/api/products/new', data, {withCredentials:true})
             .then(resp => {
                 alert('Product was created successfully.')
                 redirect()

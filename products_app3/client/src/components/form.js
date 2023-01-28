@@ -45,7 +45,7 @@ const Form = (props) => {
     useEffect(() => {
         if (!id) return
 
-        axios.get(`http://localhost:8000/api/products/${id}`)
+        axios.get(`http://localhost:8000/api/products/${id}`, {withCredentials:true})
             .then(res => dispatch({ type: 'init', payload: res.data.product }))
             .catch(error => console.log(error))
     }, [])

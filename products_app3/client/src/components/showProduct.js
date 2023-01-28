@@ -11,7 +11,7 @@ const ShowProduct = (props) => {
     const redirect = route => navigate(route || '/')
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/products/${id}`)
+        axios.get(`http://localhost:8000/api/products/${id}`, {withCredentials:true})
             .then(res => setProduct(res.data.product))
             .catch(error => redirect('/404'))
     }, [])

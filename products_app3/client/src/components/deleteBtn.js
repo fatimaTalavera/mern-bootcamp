@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const DeleteBtn = ({ id, redirectFn }) => {
     const deleteHandler = ()=>{
-        axios.delete(`http://localhost:8000/api/products/delete/${id}`)
+        axios.delete(`http://localhost:8000/api/products/delete/${id}`, {withCredentials:true})
             .then(res => redirectFn())
             .catch(err => console.log(err))
     }
